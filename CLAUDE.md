@@ -2,7 +2,8 @@
 
 ## 技術スタック
 - **フロントエンド**: React 18 + TypeScript (strict) + Vite
-- **バックエンド**: Supabase (PostgreSQL + Auth + RLS)
+- **APIサーバー**: Hono
+- **DB**: PostgreSQL
 - **ユニット/統合テスト**: Vitest + Testing Library
 - **E2Eテスト**: Playwright
 
@@ -24,7 +25,7 @@
 - **実装より先にテストを書く**（テストなしの実装は禁止）
 - テストはインターフェースをテストする（実装の詳細はテストしない）
 - `any` 型禁止
-- Supabase の操作には必ず RLS を設計する
+- APIサーバー側で必ずユーザー認証・認可チェックを実装する
 
 ## ディレクトリ構成
 ```
@@ -34,7 +35,7 @@ src/
   hooks/              # カスタムフック
     __tests__/
   lib/
-    supabase.ts       # Supabaseクライアント
+    api.ts            # APIクライアント（Honoへのfetch）
   types/              # 型定義
   utils/              # ユーティリティ関数
     __tests__/
@@ -53,7 +54,7 @@ npx tsc --noEmit      # 型チェック
 ```
 
 ## 環境変数
-`.env.example` をコピーして `.env` を作成し、Supabaseの値を設定する。
+`.env.example` をコピーして `.env` を作成し、各値を設定する。
 ```
 cp .env.example .env
 ```
