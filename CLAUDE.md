@@ -2,8 +2,12 @@
 
 ## 技術スタック
 - **フロントエンド**: React 18 + TypeScript (strict) + Vite
-- **APIサーバー**: Hono
-- **DB**: PostgreSQL
+- **APIサーバー**: Hono（Node.js）+ AWS Lambda Web Adapter
+- **ORM**: Prisma
+- **DB**: PostgreSQL（AWS RDS）
+- **認証**: Amazon Cognito（メール + パスワード、JWTをhttpOnly Cookieで管理）
+- **外部API**: Google Maps Platform（Geocoding API + Routes API）
+- **ホスティング**: AWS（フロントエンド: S3 + CloudFront、API: Lambda、DB: RDS）
 - **ユニット/統合テスト**: Vitest + Testing Library
 - **E2Eテスト**: Playwright
 
